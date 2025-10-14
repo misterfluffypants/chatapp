@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatAPP</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app">
+
+    <!-- LEFT PANEL -->
+    <div class="left" id="leftPanel">
+        <div class="brand">
+            <div class="logo">C</div>
+            <h2>ChatApp</h2>
+        </div>
+        <div class="chat-list" id="chatList"></div>
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="right">
+        <div class="top-bar">
+            <div class="conversation-title">
+                <div id="roomTitle">Room</div>
+                <div class="subtext" id="statusText">Disconnected</div>
+            </div>
+            <div class="participants">
+                <span id="userCount">0</span> users
+                <button id="leaveBtn" class="danger">Leave</button>
+            </div>
+            <div class="call-controls">
+                <button id="callBtn" class="primary">Call</button>
+                <button id="hangBtn" class="danger">Hangup</button>
+            </div>
+        </div>
+
+        <div class="messages" id="messages"></div>
+
+        <!-- Composer always fixed at bottom -->
+        <div class="composer" id="composer">
+            <input type="text" id="messageInput" placeholder="Type a message...">
+            <button id="sendBtn">Send</button>
+        </div>
+        <div id="typingIndicator" class="typing-indicator">Someone is typing...</div>
+
+        <!-- Video panel (hidden until call) -->
+        <div class="video-panel" id="videoPanel">
+            <div class="videos-grid">
+                <video id="localVideo" autoplay muted playsinline></video>
+                <video id="remoteVideo" autoplay playsinline></video>
+            </div>
+            <div id="callInfo">Not in call</div>
+        </div>
+    </div>
+</div>
+
+<!-- Overlay for entering name and room -->
+<div class="overlay" id="joinOverlay">
+    <div class="join-box">
+        <h2>Join a Room</h2>
+        <input type="text" id="nameInput" placeholder="Your name">
+        <input type="text" id="roomInput" placeholder="Room name">
+        <button id="joinBtn">Join</button>
+    </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

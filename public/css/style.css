@@ -1,0 +1,182 @@
+:root {
+    --background: #18191c;
+    --sidebar-bg: #202225;
+    --panel-bg: #2f3136;
+    --accent: #5865f2;
+    --text-primary: #dcddde;
+    --text-secondary: #72767d;
+    --msg-bg: #36393f;
+    --msg-bg-me: #7289da;
+    --border-radius: 8px;
+    --transition: 0.2s;
+    --font-family: "Segoe UI", "Roboto", sans-serif;
+}
+
+*{box-sizing:border-box;}
+body{margin:0;font-family:var(--font-family);background-color:var(--background);color:var(--text-primary);}
+.app{display:flex;height:100vh;width:100vw;overflow:hidden;}
+
+/* LEFT PANEL */
+.left {
+    width: 300px;
+    background-color: var(--sidebar-bg);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-right: 1px solid #2c2f33;
+}
+
+.brand {display: flex; align-items: center; margin-bottom: 20px;}
+.brand .logo {width:40px; height:40px; background-color:var(--accent); border-radius:50%; display:flex;align-items:center;justify-content:center; font-weight:bold;color:white; margin-right:10px; font-size:18px;}
+.brand h2 {margin:0;font-size:18px;}
+.brand .subtext {font-size:12px;color:var(--text-secondary);}
+
+/* CHAT LIST */
+.chat-list {flex:1; overflow-y:auto;}
+.chat-item {display:flex;align-items:center; padding:6px;margin-bottom:5px;border-radius:var(--border-radius); cursor:pointer;transition:background-color var(--transition);}
+.chat-item:hover{background-color:#40444b;}
+.chat-item .avatar {width:36px;height:36px;border-radius:50%;background-color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;margin-right:10px;}
+.chat-item .meta .name{font-weight:500;font-size:14px;}
+.chat-item .meta .preview{font-size:12px;color:var(--text-secondary);}
+
+/* RIGHT PANEL */
+.right{flex:1;display:flex;flex-direction:column;background-color:var(--panel-bg);}
+.top-bar{display:flex;justify-content:space-between;align-items:center;padding:10px;border-bottom:1px solid #2c2f33;}
+.conversation-title{display:flex;flex-direction:column;}
+.conversation-title .subtext{font-size:12px;color:var(--text-secondary);}
+.call-controls button{margin-left:5px;padding:6px 10px;border-radius:6px;border:none;cursor:pointer;transition:background-color var(--transition);}
+.call-controls .primary{background-color:var(--accent); color:white;}
+.call-controls .primary:hover{background-color:#4752c4;}
+.call-controls .danger{background-color:#f04747;color:white;}
+.call-controls .danger:hover{background-color:#c03939;}
+
+/* PARTICIPANTS + LEAVE BUTTON */
+.participants {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+#leaveBtn {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: none;
+    background-color: #f04747;
+    color: white;
+    cursor: pointer;
+}
+#leaveBtn:hover {
+    background-color: #c03939;
+}
+
+/* MESSAGES */
+.messages{flex:1;padding:10px;overflow-y:auto;margin-bottom:60px;}
+.msg{margin-bottom:8px;display:flex;justify-content:flex-start;}
+.msg.me{justify-content:flex-end;}
+.bubble{max-width:70%;background-color:var(--msg-bg);color:var(--text-primary);padding:8px 12px;border-radius:var(--border-radius);word-wrap:break-word;}
+.msg.me .bubble{background-color:var(--msg-bg-me);color:white;}
+
+/* COMPOSER fixed bottom */
+.composer{
+    position: fixed;
+    bottom: 0;
+    left:0;
+    right:0;
+    padding:5px 10px;
+    background-color:#2f3136;
+    display:flex;
+    z-index:50;
+    border-top:1px solid #2c2f33;
+}
+.composer input{
+    flex:1;
+    padding:10px 12px;
+    border-radius:20px;
+    border:none;
+    background-color:#202225;
+    color:var(--text-primary);
+}
+.composer button{
+    margin-left:5px;
+    padding:8px 12px;
+    border:none;
+    border-radius:6px;
+    background-color:var(--accent);
+    color:white;
+    cursor:pointer;
+}
+
+/* TYPING INDICATOR */
+.typing-indicator {
+    position: fixed;
+    bottom: 50px;
+    left: 20px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    display: none;
+}
+
+/* VIDEO PANEL */
+.video-panel{
+    position:fixed;
+    bottom:60px;
+    left:0;
+    right:0;
+    display:none;
+    flex-direction:column;
+    align-items:center;
+    padding:5px;
+    z-index:40;
+}
+.video-panel .videos-grid{
+    display:flex;
+    gap:5px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+video{
+    width:45%;
+    max-width:200px;
+    border-radius:8px;
+    background-color:black;
+}
+#callInfo{font-size:14px;color:var(--text-secondary);text-align:center;margin-top:5px;}
+
+/* OVERLAY FOR JOIN */
+.overlay{
+    position:fixed;
+    top:0; left:0; width:100%; height:100%;
+    background: rgba(0,0,0,0.85);
+    display:flex; justify-content:center; align-items:center;
+    z-index:100;
+}
+.join-box{
+    background-color:#2f3136;
+    padding:20px;
+    border-radius:12px;
+    display:flex;
+    flex-direction:column;
+    width:90%;
+    max-width:350px;
+}
+.join-box h2{margin:0 0 15px 0;color:var(--text-primary);text-align:center;}
+.join-box input{margin-bottom:10px;padding:10px 12px;border-radius:8px;border:none;background-color:#202225;color:var(--text-primary);}
+.join-box input:focus{outline:none;background-color:#3a3c43;box-shadow:0 0 0 2px var(--accent);}
+.join-box button{padding:10px;border-radius:8px;border:none;background-color:var(--accent);color:white;cursor:pointer;font-weight:500;font-size:14px;}
+.join-box button:hover{background-color:#4752c4;}
+
+/* SCROLLBARS */
+.messages::-webkit-scrollbar,.chat-list::-webkit-scrollbar{width:8px;}
+.messages::-webkit-scrollbar-thumb,.chat-list::-webkit-scrollbar-thumb{background-color:#2c2f33;border-radius:4px;}
+
+/* MOBILE ADAPTIVE */
+@media(max-width:768px){
+    .app{flex-direction:column;}
+    .left{display:none;width:100%;flex-direction:column;border-right:none;border-bottom:1px solid #2c2f33;}
+    .left.show{display:flex;position:absolute;top:0;left:0;height:100vh;background-color:var(--sidebar-bg);z-index:10;padding:10px;flex-direction:column;overflow-y:auto;}
+    .messages{margin-bottom:60px;}
+    .composer{bottom:0;}
+    .video-panel{bottom:60px;}
+    video{width:100%;max-height:250px;}
+}
