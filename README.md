@@ -107,12 +107,3 @@ node server.js
 5. Open a pull request
 
 ---
-
-## Optional Enhancements
-
-* 🔐 HTTPS support for WebRTC
-* 🌐 Deploy to cloud (Heroku, Render, Vercel)
-* 🖼️ Add avatars or emoji support
-* 🔔 Desktop notifications for new messages
-
-```
